@@ -1,11 +1,11 @@
-from flask import Flask, render_template, request, Response # type: ignore
-import requests # type: ignore
+from flask import Flask, render_template, request, Response 
+import requests 
 import time
 import hashlib
 
-# --- Caching ---
+#Caching
 cache_storage = {}
-CACHE_TTL = 60  # seconds
+CACHE_TTL = 60 
 
 def get_cache(key):
     if key in cache_storage:
@@ -19,7 +19,7 @@ def get_cache(key):
 def set_cache(key, data):
     cache_storage[key] = (data, time.time())
 
-# --- Content Filtering ---
+#Content Filtering
 BLOCKED_KEYWORDS = ["facebook", "porn", "banned"]
 
 def is_blocked(url):
@@ -28,15 +28,15 @@ def is_blocked(url):
             return True
     return False
 
-# --- Bandwidth Throttling ---
-THROTTLE_SPEED = 100  # bytes per second
+#Bandwidth Throttling
+THROTTLE_SPEED = 100
 
 def throttle_speed(size):
     delay = size / THROTTLE_SPEED
     print(f"\n[NETWORK CONTROL] Throttling active: Data size is {size} bytes. Delaying response by {round(delay, 2)} seconds...\n")
     time.sleep(delay)
 
-# --- Flask App ---
+#Flask
 app = Flask(__name__)
 
 @app.route('/')
@@ -50,7 +50,7 @@ def proxy():
         return "Missing URL. Use /proxy?url=http://example.com"
 
     if is_blocked(url):
-        # --- صفحة التحذير الشيك --
+        #Warning Restricted Page
         return """
         <body style="background-color: #1a1a1a; color: white; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
             <div style="text-align: center; border: 2px solid #d9534f; padding: 40px; border-radius: 15px; background-color: #222; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
