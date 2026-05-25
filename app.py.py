@@ -4,7 +4,7 @@ import time
 import hashlib
 
 #Caching
-cache_storage = {}
+cache_storage = {} 
 CACHE_TTL = 60 
 
 def get_cache(key):
