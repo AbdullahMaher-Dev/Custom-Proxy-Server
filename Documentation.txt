@@ -1,0 +1,150 @@
+                                                                                                                                        🌐 TEAM 121 Proxy Server
+
+                                                                                                                                                                     📌 Overview
+                                                                                   A lightweight proxy server application developed using Python, Flask, and Tkinter.
+                                                                      The system acts as an intermediary between users and websites while providing caching, content filtering, and bandwidth throttling features.
+
+🏗️ Project Purpose
+The project demonstrates how proxy servers work by forwarding client requests to websites while applying network control techniques such as caching and filtering.
+
+✅ Main Components
+
+🌍 Web Backend (Flask Server)
+- Handles incoming client requests.
+- Fetches webpages from external websites.
+- Applies filtering, caching, and throttling logic.
+- Returns responses to the client.
+
+🖥️ Desktop GUI (Tkinter Client)
+- Provides a graphical interface for users.
+- Allows users to enter URLs easily.
+- Displays webpage content or error messages.
+- Communicates directly with the Flask proxy server.
+
+📄 HTML Welcome Page
+- Displays a simple landing page for the proxy server.
+- Uses responsive HTML and CSS styling.
+- Shows a welcome message for TEAM 121.
+
+🔐 Core Features
+
+⚡ In-Memory Caching
+- Stores fetched webpage data temporarily.
+- Uses MD5 hashing to generate cache keys.
+- Reduces repeated requests to the same URL.
+- Cache expires automatically after 60 seconds (TTL).
+
+🚫 Content Filtering
+- Blocks websites containing restricted keywords.
+- Prevents access to banned URLs.
+- Example blocked keywords:
+  - facebook
+  - porn
+  - banned
+
+🐢 Bandwidth Throttling
+- Simulates limited internet speed.
+- Delays response delivery based on content size.
+- Configured speed limit:
+  - 50,000 bytes per second (~50 KB/s)
+
+🔄 HTTP Request Handling
+- Supports GET requests.
+- Supports POST requests.
+- Uses the Python requests library for forwarding traffic.
+
+⚙️ Technologies Used
+- Python
+- Flask
+- Tkinter
+- HTML/CSS
+- Requests Library
+
+🧠 Advanced Concepts Used
+- Proxy Server Architecture
+- Client-Server Communication
+- HTTP Request Forwarding
+- Caching Mechanism
+- URL Filtering
+- Bandwidth Control
+- GUI Development
+- Web Backend Development
+
+📁 File Structure
+project_folder/
+├── app.py                 # Flask backend proxy server
+├── gui.py                 # Tkinter GUI application
+├── index.html             # Welcome webpage template
+└── Documentation.txt      # Project documentation
+
+🛠️ Backend Features (app.py)
+- Flask server running on localhost:5000
+- Root endpoint:
+  - /
+- Proxy endpoint:
+  - /proxy?url=http://example.com
+- URL validation and filtering
+- Cache management system
+- Response forwarding system
+- Error handling
+
+🖥️ GUI Features (gui.py)
+- URL input field
+- Automatic protocol handling (http://)
+- Fetch button for requests
+- Scrollable output area
+- Displays webpage HTML content
+- Error message display
+
+🌐 HTML Interface Features (index.html)
+- Responsive centered layout
+- Styled container design
+- Welcome message for users
+- Simple modern UI
+
+🆕 Implemented Features
+1. URL request forwarding through proxy server.
+2. Automatic caching for repeated requests.
+3. URL blacklist filtering system.
+4. Simulated bandwidth throttling.
+5. Graphical desktop interface using Tkinter.
+6. HTML welcome page with CSS styling.
+7. GET and POST request support.
+8. Error handling for failed requests.
+
+🧪 How to Run the Project
+
+1. Install Python (>=3.6).
+
+2. Install required libraries:
+   pip install Flask requests
+
+3. Start the Flask backend server:
+   python app.py
+
+4. Open another terminal window.
+
+5. Launch the GUI application:
+   python gui.py
+
+6. Enter a website URL in the GUI.
+
+7. Click "Fetch Page" to retrieve webpage content through the proxy server.
+
+📌 Example Usage
+- Normal Website:
+  example.com
+  → Displays webpage source content.
+
+- Blocked Website:
+  facebook.com
+  → Returns:
+    "Access to this URL is blocked by proxy rules."
+
+- Repeated Requests:
+  Same URL requested twice within 60 seconds
+  → Loads faster using cache.
+
+🎯 Conclusion
+The TEAM 121 Proxy Server project successfully demonstrates the basic principles of proxy servers and network traffic management.
+It combines backend networking concepts with GUI development to provide an interactive and educational application.
